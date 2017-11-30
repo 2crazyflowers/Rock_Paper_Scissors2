@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="game">
+		
+	</div>
+
+	<script type="text/javascript">
+
+	const getUserChoice = userInput => {
+		userInput = userInput.toLowerCase();
+		if (userInput === "rock" || userInput === "paper" || userInput ==="scissors" || userInput === "bomb") {
+	
+			return userInput;
+	
+	} else {
+		console.log("Error, please enter either rock, paper or scissors.");
+		};
+	};
+
+
+	const getComputerChoice = () => {
+		getRandomNumber = Math.floor(Math.random() * 3);
+
+		if (getRandomNumber === 0) {
+			return "rock";
+
+		} else if (getRandomNumber === 1) {
+			return "paper";
+
+		} else  {
+			return "scissors";
+		};
+	};
+
+	const determineWinner = (userChoice, computerChoice) => {
+		if (userChoice === "bomb") {
+			return "You totally beat the computer and blew it up!";
+		};
+		if (userChoice === "rock") {
+			if (computerChoice === "scissors") {
+				return "You beat the computer!";
+
+			} else {
+				return "You lost to the computer.";
+
+			};
+
+		};
+
+		if (userChoice === "paper") {
+			if (computerChoice === "rock") {
+				return "You beat the computer!";
+
+			} else {
+				return "The computer won.";
+
+			};
+		};
+
+		if (userChoice === "scissors") {
+			if (computerChoice === "paper") {
+				return "You won!";
+
+			} else {
+				return "The computer won!";
+
+			};
+		};
+	};
+
+const playGame = () => {
+	//I would like to get prompts from user then also put info to page rather than to console, but it doesn't work yet.
+	//var getUserChoice = prompt("Please enter either rock, paper or scissors to play.");
+	const userChoice = getUserChoice("rock");
+	let computerChoice = getComputerChoice();
+	console.log("You threw " + userChoice);
+	console.log("The computer threw " + computerChoice);
+	console.log(determineWinner(userChoice, computerChoice));
+};
+
+playGame();
+
+
+
+	</script>
+</body>
+</html>
